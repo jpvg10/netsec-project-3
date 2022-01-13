@@ -1,0 +1,10 @@
+[Interface]
+PrivateKey = 
+Address = 10.3.0.1/24
+
+[Peer]
+PublicKey = 
+Endpoint = 172.30.30.30:51820
+AllowedIPs = 10.3.0.2/32
+
+PersistentKeepalive = 25

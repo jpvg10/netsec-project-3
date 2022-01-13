@@ -1,0 +1,9 @@
+[Interface]
+PrivateKey = 
+Address = 10.3.0.2/24
+ListenPort = 51820
+SaveConfig = true
+
+[Peer]
+PublicKey = 
+AllowedIPs = 10.3.0.1/32
