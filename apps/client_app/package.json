@@ -3,7 +3,8 @@
   "main": "client.js",
   "dependencies": {
     "uuid": "*",
-    "winston": "*"
+    "winston": "*",
+    "axios": "*"
   },
   "scripts": {
     "start": "node client.js"

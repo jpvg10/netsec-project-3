@@ -107,7 +107,10 @@ Vagrant.configure("2") do |config|
     client_a1.vm.provision :file, source: './apps/client_app',
       destination: "client_app"
     # Install dependencies and define the NAT
-    client_a1.vm.provision :shell, run: "always", path: "scripts/client_a.sh"
+    client_a1.vm.provision :shell, run: "always", path: "scripts/client.sh",
+      env: {
+        "SERVER_IP" => "10.0.0.1",
+      }
   end
 
   # Client A2
@@ -135,7 +138,10 @@ Vagrant.configure("2") do |config|
     client_a2.vm.provision :file, source: './apps/client_app',
       destination: "client_app"
     # Install dependencies and define the NAT
-    client_a2.vm.provision :shell, run: "always", path: "scripts/client_a.sh"
+    client_a2.vm.provision :shell, run: "always", path: "scripts/client.sh",
+      env: {
+        "SERVER_IP" => "10.0.0.1",
+      }
   end
 
   #######################
@@ -198,7 +204,10 @@ Vagrant.configure("2") do |config|
     client_b1.vm.provision :file, source: './apps/client_app',
       destination: "client_app"
     # Install dependencies and define the NAT
-    client_b1.vm.provision :shell, run: "always", path: "scripts/client_b.sh"
+    client_b1.vm.provision :shell, run: "always", path: "scripts/client.sh",
+      env: {
+        "SERVER_IP" => "",
+      }
   end
 
   # Client B2
@@ -227,7 +236,10 @@ Vagrant.configure("2") do |config|
     client_b2.vm.provision :file, source: './apps/client_app',
       destination: "client_app"
     # Install dependencies and define the NAT
-    client_b2.vm.provision :shell, run: "always", path: "scripts/client_b.sh"
+    client_b2.vm.provision :shell, run: "always", path: "scripts/client.sh",
+      env: {
+        "SERVER_IP" => "",
+      }
   end
 
   ##########################
@@ -293,7 +305,13 @@ Vagrant.configure("2") do |config|
     server_s1.vm.provision :file, source: './apps/server_app',
       destination: "server_app"
     # Install dependencies and define the NAT
-    server_s1.vm.provision :shell, run: "always", path: "scripts/cloud_server.sh"
+    server_s1.vm.provision :shell, run: "always", path: "scripts/cloud_server.sh",
+    env: {
+      "DEVICE_ID" => "993063a1718f4cd9b0bb3c753b165a26",
+      "OVERLAY_ID" => "10f9f38884f049f4a70089d0cf746c05",
+      "TOKEN" => "58gSPu_1HIh89gCR0qpMng",
+      "ADDRESS" => "10.0.0.1/24"
+    }
   end
 
   # Cloud server S2

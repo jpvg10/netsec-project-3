@@ -4,7 +4,8 @@
   "dependencies": {
     "uuid": "*",
     "express": "*",
-    "winston": "*"
+    "winston": "*",
+    "axios": "*"
   },
   "scripts": {
     "start": "node server.js"
