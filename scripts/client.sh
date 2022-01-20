@@ -31,14 +31,12 @@ privateKey=`sudo cat /etc/wireguard/private.key`
 publicKey=`sudo cat /etc/wireguard/public.key`
 
 cat << EOF > api_params.js
-{
-  module.exports = {
-    deviceId: "$DEVICE_ID",
-    overlayId: "$OVERLAY_ID",
-    token: "$TOKEN",
-    publicKey: "$publicKey",
-  };
-}
+module.exports = {
+  deviceId: "$DEVICE_ID",
+  overlayId: "$OVERLAY_ID",
+  token: "$TOKEN",
+  publicKey: "$publicKey",
+};
 EOF
 
 ## Register public key in the API

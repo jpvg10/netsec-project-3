@@ -143,6 +143,8 @@ Vagrant.configure("2") do |config|
     # Client app
     client_a2.vm.provision :file, source: './apps/client_app',
       destination: "client_app"
+    client_a2.vm.provision :file, source: './apps/common',
+      destination: "client_app"
     # Install dependencies and define the NAT
     client_a2.vm.provision :shell, run: "always", path: "scripts/client.sh",
       env: {
@@ -209,10 +211,16 @@ Vagrant.configure("2") do |config|
     # Client app
     client_b1.vm.provision :file, source: './apps/client_app',
       destination: "client_app"
+    client_b1.vm.provision :file, source: './apps/common',
+      destination: "client_app"
     # Install dependencies and define the NAT
     client_b1.vm.provision :shell, run: "always", path: "scripts/client.sh",
       env: {
-        "SERVER_IP" => "",
+        "SERVER_IP" => "10.0.1.1",
+        "DEVICE_ID" => "03b0ae64c09040a4b44b969a8417b1e3",
+        "OVERLAY_ID" => "5e606382d56e4bd2a1a87a7a1646aaca",
+        "TOKEN" => "79I7DVhm1t1svMX81wvgdg",
+        "ADDRESS" => "10.0.1.2/24"
       }
   end
 
@@ -240,6 +248,8 @@ Vagrant.configure("2") do |config|
     end
     # Client app
     client_b2.vm.provision :file, source: './apps/client_app',
+      destination: "client_app"
+    client_b2.vm.provision :file, source: './apps/common',
       destination: "client_app"
     # Install dependencies and define the NAT
     client_b2.vm.provision :shell, run: "always", path: "scripts/client.sh",
@@ -314,12 +324,12 @@ Vagrant.configure("2") do |config|
       destination: "server_app"
     # Install dependencies and define the NAT
     server_s1.vm.provision :shell, run: "always", path: "scripts/cloud_server.sh",
-    env: {
-      "DEVICE_ID" => "993063a1718f4cd9b0bb3c753b165a26",
-      "OVERLAY_ID" => "10f9f38884f049f4a70089d0cf746c05",
-      "TOKEN" => "keQuQ5Q7v_gag4F7TIBhKw",
-      "ADDRESS" => "10.0.0.1/24"
-    }
+      env: {
+        "DEVICE_ID" => "993063a1718f4cd9b0bb3c753b165a26",
+        "OVERLAY_ID" => "10f9f38884f049f4a70089d0cf746c05",
+        "TOKEN" => "keQuQ5Q7v_gag4F7TIBhKw",
+        "ADDRESS" => "10.0.0.1/24"
+      }
   end
 
   # Cloud server S2
@@ -346,8 +356,16 @@ Vagrant.configure("2") do |config|
     # Server app
     server_s2.vm.provision :file, source: './apps/server_app',
       destination: "server_app"
+    server_s2.vm.provision :file, source: './apps/common',
+      destination: "server_app"
     # Install dependencies and define the NAT
-    server_s2.vm.provision :shell, run: "always", path: "scripts/cloud_server.sh"
+    server_s2.vm.provision :shell, run: "always", path: "scripts/cloud_server.sh",
+      env: {
+        "DEVICE_ID" => "6a05a3b32c4044e994bd47d58b1a2ed5",
+        "OVERLAY_ID" => "5e606382d56e4bd2a1a87a7a1646aaca",
+        "TOKEN" => "aWDicyvvufl0d2MUJZIiKA",
+        "ADDRESS" => "10.0.1.1/24"
+      }
   end
 
 end
