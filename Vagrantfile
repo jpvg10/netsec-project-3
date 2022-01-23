@@ -147,9 +147,13 @@ Vagrant.configure("2") do |config|
       destination: "client_app"
     # Install dependencies and define the NAT
     client_a2.vm.provision :shell, run: "always", path: "scripts/client.sh",
-      env: {
-        "SERVER_IP" => "10.0.0.1",
-      }
+    env: {
+      "SERVER_IP" => "10.0.0.1",
+      "DEVICE_ID" => "a8cdf0b0af914c35b4cdddb27283bde1",
+      "OVERLAY_ID" => "10f9f38884f049f4a70089d0cf746c05",
+      "TOKEN" => "6R1jIdk_jhDytM4R-5bcLA",
+      "ADDRESS" => "10.0.0.3/24"
+    }
   end
 
   #######################
@@ -253,9 +257,13 @@ Vagrant.configure("2") do |config|
       destination: "client_app"
     # Install dependencies and define the NAT
     client_b2.vm.provision :shell, run: "always", path: "scripts/client.sh",
-      env: {
-        "SERVER_IP" => "",
-      }
+    env: {
+      "SERVER_IP" => "10.0.1.1",
+      "DEVICE_ID" => "971ab711847c4fdf8e228601c558011a",
+      "OVERLAY_ID" => "5e606382d56e4bd2a1a87a7a1646aaca",
+      "TOKEN" => "ZNAFXzVMm-Z7LRH_wcuMJw",
+      "ADDRESS" => "10.0.1.3/24"
+    }
   end
 
   ##########################
@@ -327,7 +335,7 @@ Vagrant.configure("2") do |config|
       env: {
         "DEVICE_ID" => "993063a1718f4cd9b0bb3c753b165a26",
         "OVERLAY_ID" => "10f9f38884f049f4a70089d0cf746c05",
-        "TOKEN" => "keQuQ5Q7v_gag4F7TIBhKw",
+        "TOKEN" => "kK2mTM7zUpLh0DhZThnVMA",
         "ADDRESS" => "10.0.0.1/24"
       }
   end

@@ -25,7 +25,7 @@ const run = async (firstTime) => {
     // Get config
     res = await axios.get(`${baseUrl}/overlays/${overlayId}/devices/${deviceId}/wgconfig`);
     let config = res.data;
-    config = config.replace(/\[Peer \d*]/, '[Peer]');
+    config = config.replace(/\[Peer \d*]/g, '[Peer]');
     console.log(config);
 
     // Copy base file
